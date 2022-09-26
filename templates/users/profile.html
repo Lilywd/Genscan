@@ -1,0 +1,67 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block title %} Profile {% endblock title%}
+{% block content %}
+<div style="margin-top:15px ;">
+    <button  onclick="history.back()" class="back"><span>&#8592;</span> &nbsp;</button>
+    {% if request.user.is_authenticated %}
+
+        <li style="float: right;"><a href="/signout"><button  class="lr-btn">Logout</button></a></li> 
+        <li style="float: right;"><a href="/"><button class="log-btn">Home</button></a></li> 
+    {% else %}
+   
+    {% endif %}
+</div>
+<br> <br>
+<div style="text-align:center;">
+    <h2 style="margin-left: 10%;font-weight: bold; " class="set">Settings</h2>
+    <h4 style="margin-left: 10%; font-weight: bold;" class="chng">Update User information</h4>
+</div>
+<br> <br>
+<div class="ccontainer">
+    <form method="post">
+        {% csrf_token %}
+    
+    <label><b>Username</b></label><br />
+    <input class="iinput-field" type="text" id="username" name="username" placeholder="Username" required  value="{{profile_form.initial.username}}"/> <br />
+    <br />
+
+    <label><b>Email Address</b></label><br />
+    <input class="iinput-field" type="email" id="email" name="email" placeholder="name@example.com" required value="{{profile_form.initial.email}}"/><br />
+    
+   
+        {% for field in profile_form %}
+        <p>
+           {% for error in field.errors %}
+            <p style="color:red;">{{error}}</p>
+            {% endfor %}
+        </p>
+        {% endfor %}
+        {% if profile_form.non_field_errors %}
+            <div style="color:red;">
+                <p> {{profile_form.non_field_errors}}</p>
+
+            </div>
+        {% endif %}
+        {% if success_message %}
+            <p style="color:green; margin-left: 15%;">{{success_message}}</p>
+        {% endif  %}
+        <button type="submit" class="lr-btn" style="margin-left: 10%;">Save Changes</button>
+   
+    </form>
+    <br>
+    <a href="{% url 'password_change' %}" style="text-decoration: underline;"> Change Password</a>
+</div>
+<style>
+    label{
+        display: block;
+      
+        margin-bottom: -20px;
+    }
+    li{
+        list-style-type: none;
+        margin-top: -15px;
+    }
+</style>
+   
+{% endblock content %}

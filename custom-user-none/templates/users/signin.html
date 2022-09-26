@@ -1,0 +1,42 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block title %} Signin {% endblock title%}
+{% block content %} 
+
+<div style="margin-top:15px ;">
+  <button  onclick="history.back()" class="back"><span>&#8592;</span> &nbsp;</button>
+  <div style="float: right;"><a href="/register"><button class="lr-btn">Register</button></a></div>
+</div>
+
+
+<div class="ccontainer">
+    <form  action= "/signin" method="POST">
+    {% csrf_token %}
+
+    <label><b>Username</b></label><br />
+    <input class="iinput-field" type="text" id="username" name="username" placeholder="Username" required/> 
+    <br />
+    <br />
+
+    <label><b>Email Address</b></label><br />
+    <input class="iinput-field" type="email" id="email" name="email" placeholder="name@example.com" required/><br />
+    <br />
+    <label><b>Password</b></label><br />
+    <input class="iinput-field" type="password" id="pass1" name="pass1" placeholder=" Password" required/><br /> 
+    <input type="checkbox" onclick="myFunction()"/>Show Password <br>
+    <br/>
+    
+    <input class="submitt-button" id="submit_login" type="submit" value="Log in"/>
+    
+    <p class="center-text">OR</p>
+  
+    <button class="google-button" type="button" > <a href="{% url 'social:begin' 'google-oauth2' %}"   class="fa fa-google"></a> &nbsp; &nbsp; Continue with Google </button>
+
+    
+
+</form>
+<a href="/password_reset">Forgot password?</a>
+</div>
+
+
+{% endblock content %}

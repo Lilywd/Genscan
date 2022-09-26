@@ -1,0 +1,112 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block title %} Profile {% endblock title%}
+{% block content %}
+<div style="margin-top:15px ;" class="btnline">
+    <button  onclick="history.back()" class="back"><span>&#8592;</span> &nbsp;</button>
+    {% if user.is_authenticated %}
+    <li style="float: right;"><a href="/signout"><button class="log-btn">Logout</button></a></li>
+    <li style="float: right;"><a href="/profile"><button class="lr-btn" id="probtn">Hi {{ user.username}}!</button></a></li>
+   
+    {% else %}
+    {% endif %}
+</div>
+<br> <br>
+<div style="text-align:center;">
+    <h2 style="margin-left: 10%;font-weight: bold; " class="set">Settings</h2>
+    <h4 style="margin-left: 10%; font-weight: bold;" class="chng">Update User information</h4>
+</div>
+<br> <br>
+<div class="ccontainer">
+    <!-- <div class="col-md-3 ">
+        <img class="img-thumbnail" src="{{ user.profile.avatar.url }}" alt="profile-image">
+    </div> -->
+    <!-- <div class="row my-3 p-3">
+        <img class="rounded-circle account-img" src="{{ user.profile.avatar.url }} " style="cursor: pointer;"/>
+    </div> -->
+    <h5 style="margin-left: 5%;">Login email:<b>{{user.email}}</b></h5>
+    <div style="display: flex; gap: 50px; margin-left: 7%;">
+        <a href="change_email" style="text-decoration: underline;"> Change Email</a>
+        <a href="{% url 'password_change' %}" style="text-decoration: underline;"> Change Password</a>
+    </div>
+    <br> 
+    <form   method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label><b>Username</b></label><br />
+        <input class="iinput-field" type="text" id="username" name="username" placeholder="{{user.username}}" required/> 
+        <br />
+        <br />
+        <label><b>First name</b></label><br />
+        <input class="iinput-field" type="text" id="fname" name="fname" placeholder="{{ user.first_name}}" required/> 
+        <br />
+        <br />
+        <label><b>Last name</b></label><br />
+        <input class="iinput-field" type="text" id="lname" name="lname" placeholder="{{ user.last_name}}" required/> 
+        <br />
+        <br />
+
+        
+    
+    
+     
+       
+        <button type="submit" class="lr-btn" style="margin-left: 15%;">Save Changes</button>
+        <!-- <button type="reset" class="lr-btn">Reset</button> -->
+    </form>
+</div>
+
+<style>
+    label{
+        display: block;
+     
+        margin-bottom: -20px;
+    }
+   li{
+       list-style-type: none;
+       margin-top: -15px;
+   }
+
+   @media screen and (max-width: 600px) {
+    .ccontainer{
+        margin-left: -0.5%;
+        justify-content: center;
+       
+    }
+   
+     div .set{
+        margin-right: 18%;
+    }
+
+    div .chng{
+        margin-right: 19%;
+    }
+    .submitt-button{
+        width: 100%;
+    }
+    .iinput-field{
+        width: 100%;
+        
+    }
+    .btnline{
+        display: flex;
+      
+    }
+    div .back, .log-btn{
+        height: 50px;
+
+    }
+    div #probtn{
+        height: 50px;
+        width:100%;
+        
+    }
+    div #probtn, .log-btn{
+        
+        float: right;
+    }
+   
+   
+  }
+</style>
+{% endblock content %}

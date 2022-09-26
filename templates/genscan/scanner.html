@@ -1,0 +1,38 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block title %} Profile {% endblock title%}
+{% block content %}
+<div style="margin-top:15px ;">
+    <button  onclick="history.back()" class="back"><span>&#8592;</span> &nbsp;</button>
+    {% if request.user.is_authenticated %}
+
+        <li style="float: right;"><a href="/signout"><button  class="lr-btn">Logout</button></a></li> 
+        <li style="float: right;"><a href="/"><button class="log-btn">Home</button></a></li> 
+    {% else %}
+        <li style="float: right;"><a href="/"><button class="log-btn">Home</button></a></li> 
+    {% endif %}
+</div>
+<div class="ccontainer" style="padding: 40px;">
+<form action="/scanner" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+            <label><b>Upload QR Image:</b></label><br />
+            <input class="iinput-field" type="file" id="files" name="file" /><br>
+
+            <button type="submit" class="lr-btn" style="margin-bottom: 30px; margin-left: 15%;">Submit</button><br>
+
+            <textarea class="iinput-field" rows=10 placeholder="output">{{decoded}}</textarea>
+ </form>
+ </div>
+ <style>
+    li{
+       list-style-type: none;
+       margin-top: -15px;
+   }
+   .iinput-field{
+       margin-bottom: 20px;
+   }
+   label{
+       margin-bottom: -20px;
+   }
+</style>
+ {% endblock content %}

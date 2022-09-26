@@ -1,0 +1,52 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block title %} Login {% endblock title%}
+{% block content %}
+<div style="margin-top:15px ;">
+    <button  onclick="history.back()" class="back"><span>&#8592;</span> &nbsp;</button>
+    <div style="float: right;"><a href="/register"><button class="lr-btn">Register</button></a></div>
+</div>
+<div class="ccontainer">
+    <form method="post">
+        {% csrf_token %}
+        {% for field in signin_form %}
+        <p>
+            {{field.label_tag}}
+            {{field}}
+
+            {% if field.help_text %}
+                <small style="color:gray;">{{field.help_text}}</small>
+            {% endif %}
+          
+        </p>
+        {% endfor %}
+        {% for field in signin_form %}
+            {% for error in field.errors %}
+            <p style="color:red;">{{error}}</p>
+            {% endfor %}
+        {% endfor %}
+        
+      
+        {% if signin_form.non_field_errors %}
+            <div style="color:red;">
+                <p> {{signin_form.non_field_errors}}</p>
+
+            </div>
+        {% endif %}
+        <input class="submitt-button" id="submit_login" type="submit" value="Log in"/>
+        <p class="center-text">OR</p>
+
+        <button class="google-button" type="button" > <a href="{% url 'social:begin' 'google-oauth2' %}"   class="fa fa-google"></a> &nbsp; &nbsp; Continue with Google </button>
+       
+    </form>
+    
+    <a href="/password_reset">Forgot password?</a> 
+</div>
+   
+<style>
+    label{
+        display: block;
+        font-weight: bold;
+    }
+</style>
+{% endblock content %}

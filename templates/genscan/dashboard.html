@@ -1,0 +1,30 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block title %} Profile {% endblock title%}
+{% block content %}
+<div style="margin-top:15px ;">
+    <button  onclick="history.back()" class="back"><span>&#8592;</span> &nbsp;</button>
+    {% if request.user.is_authenticated %}
+
+        <li style="float: right;"><a href="/signout"><button  class="lr-btn">Logout</button></a></li> 
+        <li style="float: right;"><a href="/"><button class="log-btn">Home</button></a></li> 
+    {% else %}
+        <li style="float: right;"><a href="/"><button class="log-btn">Home</button></a></li> 
+    {% endif %}
+</div>
+<br>
+<div><a href="/profile">profile</a></div>
+<br>
+<div><a href="/generator">generator</a></div>
+<br>
+<div><a href="/scanner">scanner</a></div>
+
+<style>
+    li{
+       list-style-type: none;
+       margin-top: -15px;
+   }
+
+ 
+</style>
+{% endblock content %}

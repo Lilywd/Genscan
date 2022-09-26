@@ -1,0 +1,40 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block title %} Registration  {% endblock title%}
+{% block content %}
+<div style="margin-top:15px ;">
+    <button  onclick="history.back()" class="back"><span>&#8592;</span> &nbsp;</button>
+    <div style="float: right;"><a href="/signin"><button class="lr-btn">Login</button></a></div>
+</div>
+<div class="ccontainer">
+    <form method="post">
+        {% csrf_token %}
+        {% for field in registration_form %}
+        <p>
+            {{field.label_tag}}
+            {{field}}
+
+            {% if field.help_text %}
+                <small style="color:gray";>{{field.help_text}}</small>
+            {% endif %}
+            {% for error in field.errors %}
+            <p style="color:red";>{{error}}</p>
+            {% endfor %}
+
+        </p>
+        {% endfor %}
+        <input class="submitt-button" id="submit_login" type="submit" value="Create Your Account"/>
+        <p class="center-text">OR</p>
+
+        <button class="google-button" type="button" > <a href="{% url 'social:begin' 'google-oauth2' %}"   class="fa fa-google"></a> &nbsp; &nbsp; Continue with Google </button>
+       
+    </form>
+</div>
+<style>
+    label{
+        display: block;
+        font-weight: bold;
+    }
+</style>
+   
+{% endblock content %}

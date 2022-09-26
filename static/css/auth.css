@@ -1,0 +1,131 @@
+.ccontainer{
+    margin-left: 40% ;
+    
+  
+
+}
+.iinput-field{
+    width: 50%;
+    padding: 10px 20px;
+  
+    margin: -4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    outline: none;
+    position: relative;
+    z-index: 2;
+    
+
+}
+.submitt-button{
+    background-color: black;
+    color: white;
+    padding: 12px 20px;
+    margin: 5px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+  
+}
+.submitt-button:hover{
+    opacity: 0.9;
+}
+
+.google-button{
+    background-color: #ddd;
+    color: #000000;
+    padding: 10px 20px;
+    margin: 5px 0;
+    border:1px solid black;
+    cursor: pointer;
+    width: 50%;
+  
+}
+.google-button:hover{
+    background-color: #ccc;
+}
+.center-text{
+    margin-left: 22%;
+    margin-top: 2px;
+    margin-bottom:-2px ;
+
+}
+.center-text1{
+    margin-left: 10%;
+    padding: 8px;
+}
+.center-text1 a{
+    font-style: oblique;
+}
+a{
+    text-decoration: none;
+    color: black;
+    
+}
+
+
+.fa {
+    
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.fa-google{
+    background: 
+    linear-gradient(to bottom left,transparent 49%,#fbbc05 50%) 0 25%/48% 40%,
+    linear-gradient(to top    left,transparent 49%,#fbbc05 50%) 0 75%/48% 40%,
+  
+    linear-gradient(-40deg ,transparent 53%,#ea4335 54%),
+    linear-gradient( 45deg ,transparent 46%,#4285f4 48%),
+    #34a853;
+    background-repeat:no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    
+}
+
+.back{
+    border: none;
+   
+    display: inline-block;
+    padding: 10px 25px;
+    color: black;
+    background-color: #ddd;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    margin-top: -5px;
+}
+.back:hover{
+    background-color: #ccc;
+}
+label{
+    
+    margin-bottom: 0.6px;
+    display: block;
+}
+
+@media screen and (max-width: 600px) {
+    .ccontainer{
+        margin-left: -0.5%;
+        justify-content: center;
+    }
+   
+    .google-button {
+       width: 100%;
+    }
+    .submitt-button{
+        width: 100%;
+    }
+    .iinput-field{
+        width: 100%;
+        
+    }
+  
+   
+  }
