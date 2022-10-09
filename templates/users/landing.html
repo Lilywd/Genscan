@@ -3,7 +3,7 @@
 {% load static %}
 {% block content %} 
 
-<header>
+<header >
     <nav>
         <ul>
             <li><a href="/" >Home</a></li>
@@ -20,6 +20,31 @@
         </ul>
     </nav>
 </header>
-<a href="/dashboard">dashboard</a>
+<br>
 
+<main class="main">
+    <div class="content">
+        <h1 class="h2">Get The Most Of Your Information Secured.</h1>
+  
+        <p class="p"> Generate,save and utilize your digital QR codes.</p>
+        <br>
+        <a href="/generator"><button class="lr-btn">Generate QR code</button></a>
+        
+    </div>
+   
+    <div class="content">
+        <h1 class="h2">Get The Most  Out Of Your QrCode.</h1>
+  
+        <p class="p"> Scan,decode and utilize your digital QR codes.</p>
+        <br>
+        <a href="/scanner"><button class="log-btn">Scan QR code</button></a>
+        
+    </div>
+   
+</main>
+<style>
+    body{
+        color: #163037;
+    }
+</style>
 {% endblock content %}

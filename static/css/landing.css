@@ -1,0 +1,25 @@
+/* @media only screen and (max-width: 767px) { */
+.image {
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+.main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.img {
+    width: 200px;
+    height: 200px;
+}
+
+.content {
+  color: #163037;
+  margin-top: 10%;
+  margin-left: 10px;
+}
+
+.p {
+  margin-top: 10px;
+}
+
+/* } */

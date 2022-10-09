@@ -6,6 +6,7 @@
 body{
     margin: 0 70px ;
     font-family: Arial, Helvetica, sans-serif;
+    
 }
 
 ul {
@@ -22,7 +23,7 @@ li {
 
 li a {
     display: block;
-    color: black;
+  
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -38,7 +39,7 @@ li a:hover:not(.active) {
     outline: 0;
     display: inline-block;
     padding: 10px 25px;
-    color: black;
+    color: #163037;
     background-color: #ddd;
     text-align: center;
     cursor: pointer;

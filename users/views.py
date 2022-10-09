@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import login, authenticate,logout
+from genscan.models import QrCode
 from users.forms import RegistrationForm, UserAuthenticationForm, UserUpdateForm,ContactForm
 from django.contrib import messages
 from django.core.mail import send_mail, BadHeaderError
@@ -15,12 +16,14 @@ from .tokens import account_activation_token
 from django.contrib.auth.forms import PasswordResetForm
 from django.db.models.query_utils import Q
 from django.contrib.auth.tokens import default_token_generator
+from django.contrib.auth.decorators import login_required
 
 
 
 # Create your views here.
 def landing(request):
     return render(request, 'users/landing.html')
+
 
 def register(request):
     context = {}
@@ -89,6 +92,7 @@ def activate(request, uidb64, token):
 
 
 
+
 def signin(request):
 
 	context = {}
@@ -98,6 +102,7 @@ def signin(request):
 		return redirect("/")
 
 	if request.POST:
+	
 		form = UserAuthenticationForm(request.POST)
 		if form.is_valid():
 			email = request.POST['email']
@@ -118,7 +123,8 @@ def signin(request):
 		
 
 	context['signin_form'] = form
-
+	if 'next' in request.POST:
+		return redirect(request.POST['next'])
 	# print(form)
 	return render(request, "users/signin.html", context)
 
@@ -128,6 +134,8 @@ def signout(request):
     messages.success(request, "logout successful")
     return redirect('/')
 
+
+@login_required(login_url='/signin')
 def profile(request):
 
 	if not request.user.is_authenticated:
@@ -158,6 +166,8 @@ def profile(request):
 
 	context['profile_form'] = form
 
+	qrcode = QrCode.objects.all()
+	
 
 
 	return render(request, "users/profile.html", context)

@@ -33,6 +33,10 @@
 
             </div>
         {% endif %}
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{request.GET.next}}" />
+        {% endif %}
+
         <input class="submitt-button" id="submit_login" type="submit" value="Log in"/>
         <p class="center-text">OR</p>
 

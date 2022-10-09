@@ -52,6 +52,21 @@
     <br>
     <a href="{% url 'password_change' %}" style="text-decoration: underline;"> Change Password</a>
 </div>
+<div class="ccontainer">
+    {% if qrcode %}
+    
+    <h4 style="padding: 20px;">
+        {% for qrcode in QrCode %}
+        <ul>
+            <li>{qrcode}</li><br>
+            <li>{qrcode}</li><br>
+            <li>{qrcode}</li>
+        </ul>
+        {% endfor %}
+       
+    </h4>
+    {% endif %}
+</div>
 <style>
     label{
         display: block;
@@ -61,6 +76,9 @@
     li{
         list-style-type: none;
         margin-top: -15px;
+    }
+    ul li{
+        margin-top: 0;
     }
 </style>
    

@@ -1,23 +1,39 @@
-from unicodedata import name
+
 from django.conf import settings
+from django.http import FileResponse, HttpResponse
 from django.shortcuts import render, redirect
 from qrcode import *
 import time
+
+from users.models import User
+from genscan.forms import GenerateForm
 from .models import QrCode
 from pyzbar.pyzbar import decode
 from PIL import Image
+
+from genscan import models
+
 
 def dashboard(request):
     return render(request, 'genscan/dashboard.html')
 
 def generator(request):
+    img = ''
+    user = request.user
+    if not user.is_authenticated:
+        return redirect("must_authenticate")
+
     if request.method == 'POST':
         data = request.POST['data']
         img = make(data)
         img_name = 'qr' + str(time.time()) + '.png'
         img.save(settings.MEDIA_ROOT + '/' + img_name)
         return render(request, 'genscan/generator.html', {'img_name': img_name})
+    
+   
+
     return render(request, 'genscan/generator.html')
+
 
 
 
