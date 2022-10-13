@@ -19,17 +19,17 @@ class RegistrationForm(UserCreationForm):
 
 
 class UserAuthenticationForm(forms.ModelForm):
-    username = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'iinput-field', 'placeholder':'Username'}))
+    # username = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'iinput-field', 'placeholder':'Username'}))
     email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'iinput-field', 'placeholder':'name@example.com'}))
     password = forms.CharField(label='Password',widget=forms.PasswordInput(attrs={'class': 'iinput-field', 'placeholder':'Password'}))
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password')
+        fields = ( 'email', 'password')
 
     def clean(self):
         if self.is_valid():
-            username = self.cleaned_data['username']
+            # username = self.cleaned_data['username']
             email = self.cleaned_data['email']
             password = self.cleaned_data['password']
             if not authenticate(email=email, password=password):

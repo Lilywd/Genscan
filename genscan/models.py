@@ -16,9 +16,5 @@ class QrCode(models.Model):
     def __str__(self):
         return self.data
 
-@receiver(post_save,sender=QrCode)
-def submission_save(sender, instance,save, **kwargs):
-   instance.QrCode.save()
-
 
 

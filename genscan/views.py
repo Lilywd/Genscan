@@ -20,8 +20,7 @@ def dashboard(request):
 def generator(request):
     img = ''
     user = request.user
-    if not user.is_authenticated:
-        return redirect("must_authenticate")
+
 
     if request.method == 'POST':
         data = request.POST['data']

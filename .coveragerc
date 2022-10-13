@@ -1,0 +1,7 @@
+[run]
+source=users/,genscan/,Qrcode/,
+omit=
+    venv
+    */migrations/*
+    */tests/*
+    */__init__.py
