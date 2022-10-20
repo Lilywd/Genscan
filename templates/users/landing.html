@@ -8,8 +8,8 @@
         <ul>
             <li><a href="/" >Home</a></li>
             <li><a href="/contact" >Contact us</a></li>
-            <li><a href="/howitworks" >How it works</a></li>
-            <li><a href="/faqs" >FAQ's</a></li>
+            <li><a href="{% url 'manual' %}" >How it works</a></li>
+            <li><a href="{% url 'faqs' %}" >FAQ's</a></li>
             {% if user.is_authenticated %}
             <li style="float: right;"><a href="/signout"><button class="log-btn">Logout</button></a></li>
             <li style="float: right;"><a href="/profile"><button class="lr-btn">Hi {{ user.username}}!</button></a></li>
