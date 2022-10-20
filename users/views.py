@@ -24,6 +24,11 @@ from django.contrib.auth.decorators import login_required
 def landing(request):
     return render(request, 'users/landing.html')
 
+def manual(request):
+    return render(request, 'users/how_it_works.html')
+
+def faqs(request):
+    return render(request, 'users/FAQs.html')
 
 def register(request):
     context = {}

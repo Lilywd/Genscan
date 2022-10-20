@@ -1,9 +1,9 @@
 from django import forms
 from genscan.models import QrCode
 
-def GenerateForm(request):
 
+class GenerateForm(forms.ModelForm):
     class Meta:
         model = QrCode
-        fields = ['data']
+        fields = "__all__"
         
